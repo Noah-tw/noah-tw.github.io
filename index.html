@@ -1,157 +1,587 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>聖功女中雙語實驗班網頁測試</title>
-    <style>
-        /* 基本樣式 - 適用所有裝置 */
-        body {
-            font-family: '微軟正黑體', 'Microsoft JhengHei', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f8ff; /* 淺藍色背景 */
-        }
-        header {
-            background-color: #1e3a8a; /* 深藍色頁首 */
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .header-content {
-            max-width: 960px;
-            margin: auto;
-        }
-        nav {
-            background-color: #3b82f6; /* 藍色導覽列 */
-            overflow: hidden;
-            display: flex; /* 讓導覽列項目可以彈性排列 */
-            justify-content: center; /* 水平置中 */
-        }
-        nav a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            flex-grow: 1; /* 讓每個連結平均分配空間 */
-            max-width: 25%; /* 確保在寬螢幕上不會太寬 */
-        }
-        nav a:hover {
-            background-color: #2563eb; /* hover 時的深一點藍色 */
-        }
-        .container {
-            max-width: 960px;
-            margin: auto;
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        footer {
-            background-color: #1e3a8a; /* 深藍色頁尾 */
-            color: white;
-            text-align: center;
-            padding: 10px;
-            width: 100%;
-            margin-top: 20px;
-        }
-        img {
-            max-width: 100%; /* 確保圖片寬度不會超出容器 */
-            height: auto;
-        }
-        /* 互動按鈕的樣式 - 改為藍色系 */
-        .interactive-button {
-            padding: 10px 20px;
-            background-color: #60a5fa; /* 淺藍色按鈕 */
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .interactive-button:hover {
-            background-color: #3b82f6; /* hover 時的藍色 */
-        }
-        
-        /* 響應式設計的關鍵部分 */
-        @media screen and (max-width: 600px) {
-            nav {
-                flex-direction: column;
-            }
-            nav a {
-                text-align: left;
-                max-width: 100%;
-            }
-            .container {
-                padding: 10px;
-            }
-            header h1 {
-                font-size: 1.5em;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>聖功女中雙語實驗班</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary-blue: #4a90e2;
+      --light-blue: #7bb3f0;
+      --navy-blue: #2c5282;
+      --sky-blue: #87ceeb;
+      --accent-white: #ffffff;
+      --soft-gray: #f7fafc;
+      --text-dark: #2d3748;
+      --text-light: #4a5568;
+      --border-light: #e2e8f0;
+      --shadow-soft: 0 8px 30px rgba(74, 144, 226, 0.1);
+      --shadow-hover: 0 12px 40px rgba(74, 144, 226, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+      background: linear-gradient(135deg, var(--soft-gray) 0%, #e6f3ff 100%);
+      color: var(--text-dark);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--navy-blue) 100%);
+      color: var(--accent-white);
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+      opacity: 0.3;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-family: 'Crimson Text', serif;
+      font-weight: 600;
+      font-size: 3.2rem;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      margin-top: 0;
+      opacity: 0.95;
+      font-weight: 300;
+    }
+
+    .header-subtitle {
+      font-size: 1rem;
+      margin-top: 10px;
+      color: var(--sky-blue);
+      font-weight: 400;
+    }
+
+    /* Navigation Styles */
+    nav {
+      background: var(--accent-white);
+      box-shadow: 0 2px 20px rgba(74, 144, 226, 0.1);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      display: block;
+      color: var(--navy-blue);
+      text-align: center;
+      padding: 18px 32px;
+      text-decoration: none;
+      flex-grow: 1;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      border-bottom: 3px solid transparent;
+      position: relative;
+    }
+
+    nav a:hover {
+      background: linear-gradient(135deg, var(--sky-blue) 0%, rgba(135, 206, 235, 0.2) 100%);
+      color: var(--navy-blue);
+      border-bottom-color: var(--primary-blue);
+      transform: translateY(-2px);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: var(--light-blue);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    nav a:hover::after {
+      width: 80%;
+    }
+
+    /* Container Styles */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      background: var(--accent-white);
+      padding: 50px;
+      box-shadow: var(--shadow-soft);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-blue) 0%, var(--light-blue) 50%, var(--sky-blue) 100%);
+    }
+
+    /* Section Styles */
+    section {
+      margin-bottom: 50px;
+      scroll-margin-top: 80px;
+    }
+
+    h2 {
+      color: var(--navy-blue);
+      border-bottom: 3px solid var(--light-blue);
+      padding-bottom: 15px;
+      margin: 0 0 30px 0;
+      font-size: 2.2rem;
+      font-weight: 600;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--primary-blue);
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+      text-align: justify;
+    }
+
+    /* Interactive Button Styles */
+    .interactive-button {
+      padding: 15px 35px;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--navy-blue) 100%);
+      color: var(--accent-white);
+      border: none;
+      cursor: pointer;
+      border-radius: 50px;
+      margin: 20px 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .interactive-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .interactive-button:hover::before {
+      left: 100%;
+    }
+
+    .interactive-button:hover {
+      background: linear-gradient(135deg, var(--light-blue) 0%, var(--primary-blue) 100%);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .interactive-button:active {
+      transform: translateY(-1px);
+    }
+
+    /* Image Styles */
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 25px 0;
+      border-radius: 15px;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+      border: 2px solid var(--border-light);
+    }
+
+    img:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--light-blue);
+    }
+
+    /* News List Styles */
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: linear-gradient(135deg, var(--soft-gray) 0%, rgba(135, 206, 235, 0.1) 100%);
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 12px;
+      border-left: 5px solid var(--primary-blue);
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    li:hover {
+      background: linear-gradient(135deg, var(--sky-blue) 0%, rgba(135, 206, 235, 0.3) 100%);
+      transform: translateX(10px);
+      box-shadow: 0 4px 20px rgba(74, 144, 226, 0.2);
+      border-left-color: var(--navy-blue);
+    }
+
+    /* Info Box Styles */
+    .info-highlight {
+      background: linear-gradient(135deg, rgba(135, 206, 235, 0.2) 0%, rgba(135, 206, 235, 0.1) 100%);
+      padding: 30px;
+      border-radius: 15px;
+      border: 2px solid var(--light-blue);
+      margin: 25px 0;
+      box-shadow: 0 4px 20px rgba(74, 144, 226, 0.1);
+      position: relative;
+    }
+
+    .info-highlight::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+      border-radius: 15px 15px 0 0;
+    }
+
+    /* Contact Section Styles */
+    #contact {
+      background: linear-gradient(135deg, var(--soft-gray) 0%, rgba(135, 206, 235, 0.1) 100%);
+      padding: 40px;
+      border-radius: 15px;
+      margin-top: 30px;
+      border: 1px solid var(--border-light);
+    }
+
+    #contact p {
+      font-size: 1.1rem;
+      line-height: 2;
+    }
+
+    /* School Badge/Logo Area */
+    .school-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+      color: var(--accent-white);
+      padding: 10px 20px;
+      border-radius: 25px;
+      margin: 10px 0;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 10px rgba(74, 144, 226, 0.3);
+    }
+
+    /* Footer Styles */
+    footer {
+      background: linear-gradient(135deg, var(--navy-blue) 0%, var(--primary-blue) 100%);
+      color: var(--accent-white);
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 1rem;
+      margin-top: 50px;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--sky-blue);
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        text-align: left;
+        max-width: 100%;
+        padding: 15px 20px;
+      }
+
+      .container {
+        margin: 20px;
+        padding: 30px 20px;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      header p {
+        font-size: 1.1rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      header {
+        padding: 40px 15px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .container {
+        margin: 15px;
+        padding: 25px 15px;
+      }
+    }
+
+    /* Animation for enhanced user experience */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Special styling for school colors showcase */
+    .color-showcase {
+      display: flex;
+      gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .color-item {
+      flex: 1;
+      min-width: 120px;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      color: var(--accent-white);
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .color-primary { background: var(--primary-blue); }
+    .color-light { background: var(--light-blue); }
+    .color-navy { background: var(--navy-blue); }
+    .color-sky { background: var(--sky-blue); color: var(--navy-blue); }
+  </style>
 </head>
 <body>
-
-    <header>
-        <div class="header-content">
-            <h1>聖功女中雙語實驗班網頁測試</h1>
-            <p>歡迎來到我們的學校網頁</p>
-        </div>
-    </header>
-
-    <nav>
-        <a href="#about">關於我們</a>
-        <a href="#news">最新消息</a>
-        <a href="#academics">學術資源</a>
-        <a href="#contact">聯絡我們</a>
-    </nav>
-
-    <div class="container">
-        <section id="about">
-            <h2>學校簡介</h2>
-            <p id="info-text">這裡是學校的基礎介紹，點擊下面的按鈕可以看更多資訊。</p>
-            
-            <button class="interactive-button" id="change-text-btn">點擊看更多</button>
-            
-            <img src="images/campus_photo.jpg" alt="校園照片">
-        </section>
-
-        <section id="news">
-            <h2>最新消息</h2>
-            <ul>
-                <li>2023/10/26：學校校慶活動圓滿成功！</li>
-                <li>2023/10/20：高中部校外教學活動公告。</li>
-            </ul>
-        </section>
-        
-        <section id="academics">
-            <h2>學術資源</h2>
-            <p>介紹學校的科系、師資或圖書館等資源。</p>
-        </section>
-
-        <section id="contact">
-            <h2>聯絡方式</h2>
-            <p>地址：台南市北區...<br>電話：(06) ...<br>信箱：...</p>
-        </section>
+  <header>
+    <div class="header-content">
+      <h1>聖功女中雙語實驗班</h1>
+      <p>Catholic Sheng Kung Girls' High School</p>
+      <div class="header-subtitle">Bilingual Experimental Program</div>
+      <div class="school-badge">敬主愛人・術德兼修</div>
     </div>
+  </header>
 
-    <footer>
-        <p>&copy; 2025 聖功女中. 版權所有.</p>
-    </footer>
-    
-    <script>
-        // 1. 找到網頁上的元素：透過元素的 id 來找到它
-        const button = document.getElementById('change-text-btn');
-        const infoText = document.getElementById('info-text');
+  <nav>
+    <a href="#about">關於我們</a>
+    <a href="#news">最新消息</a>
+    <a href="#academics">學術資源</a>
+    <a href="#contact">聯絡我們</a>
+  </nav>
 
-        // 2. 監聽點擊事件：當按鈕被點擊時，執行一段程式碼
-        button.addEventListener('click', function() {
-            // 3. 改變元素內容：這段程式碼會將文字替換掉
-            infoText.innerText = "聖功女中創校於1964年，秉持著「敬主愛人」的校訓，為學生提供優質的教育環境。";
-        });
-    </script>
+  <div class="container">
+    <section id="about">
+      <h2>學校簡介</h2>
+      <p id="info-text">
+        聖功女中秉持天主教教育理念，致力於培養具備國際視野、品格優良的現代女性。我們的雙語實驗班結合傳統與創新，為學生提供卓越的教育環境。
+      </p>
+      <button class="interactive-button" id="change-text-btn">了解更多資訊</button>
 
+      <div class="info-highlight" id="detailed-info" style="display: none;">
+        <p><strong>教育願景：</strong>培養敬主愛人、術德兼修的現代女性</p>
+        <p><strong>辦學特色：</strong>雙語教學、全人教育、品格培養</p>
+        <p><strong>核心價值：</strong>誠信、關愛、卓越、服務</p>
+        
+        <div class="color-showcase">
+          <div class="color-item color-primary">校服主色</div>
+          <div class="color-item color-light">淺藍調和</div>
+          <div class="color-item color-navy">深藍穩重</div>
+          <div class="color-item color-sky">天空蔚藍</div>
+        </div>
+      </div>
+
+      <img src="https://www.skgsh.tn.edu.tw/Images/enter_hover.png" alt="聖功女中網站進入按鈕" />
+      <img src="https://s3-ap-northeast-1.amazonaws.com/popworld-tourguide-storage2/file/spot_image/106112_6081256584713.jpg" alt="校園環境" />
+    </section>
+
+    <section id="news">
+      <h2>最新消息</h2>
+      <ul>
+        <li><strong>2025/08/01：</strong>新學年度雙語實驗班招生說明會即將開始！歡迎有興趣的家長與同學參加。</li>
+        <li><strong>2025/07/25：</strong>暑期英語營隊活動圓滿結束，感謝各位同學的熱情參與，期待下次再見。</li>
+        <li><strong>2025/07/15：</strong>本校榮獲教育部雙語教育優質學校認證，全體師生與有榮焉。</li>
+        <li><strong>2025/07/10：</strong>國際交流計畫開始報名，歡迎有興趣拓展國際視野的同學踴躍參加。</li>
+      </ul>
+    </section>
+
+    <section id="academics">
+      <h2>學術資源</h2>
+      <p>本校雙語實驗班擁有完善的教學設施與豐富的學術資源，致力於為每位聖功女孩提供最優質的學習環境：</p>
+      
+      <div class="info-highlight">
+        <p><strong>🌟 雙語教學環境：</strong>採用中英文並重的教學模式，培養學生的國際競爭力與多元文化理解</p>
+        <p><strong>👩‍🏫 專業師資團隊：</strong>具備豐富教學經驗的中外籍教師共同授課，提供最高品質的教育</p>
+        <p><strong>🔬 現代化設施：</strong>智慧教室、語言學習中心、科學實驗室等完善設備支援學習</p>
+        <p><strong>🌍 國際交流：</strong>與海外姐妹校建立密切合作關係，提供豐富的文化交流機會</p>
+        <p><strong>📚 豐富資源：</strong>圖書館藏書豐富，數位學習平台完善，支援多元學習需求</p>
+      </div>
+      
+      <p>我們相信每位聖功女孩都擁有無限潛能，透過優質的雙語教育環境，協助她們在學術、品格與能力各方面都能達到卓越的表現，成為具備國際視野的現代女性。</p>
+    </section>
+
+    <section id="contact">
+      <h2>聯絡方式</h2>
+      <p>
+        <strong>學校全名：</strong>天主教聖功女子高級中學<br />
+        <strong>學校地址：</strong>臺南市北區北園街八十七巷六十四號<br />
+        <strong>聯絡電話：</strong>(06) 274-0126<br />
+        <strong>傳真號碼：</strong>(06) 274-5300<br />
+        <strong>電子信箱：</strong>info@skgsh.tn.edu.tw<br />
+        <strong>官方網站：</strong>www.skgsh.tn.edu.tw
+      </p>
+      
+      <p style="margin-top: 25px; font-style: italic; color: var(--text-light);">
+        歡迎有興趣了解雙語實驗班的家長與學生，隨時與我們聯繫。我們將竭誠為您提供詳細的諮詢服務，協助您了解聖功女中的教育理念與辦學特色。
+      </p>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 天主教聖功女子高級中學雙語實驗班 | Catholic Sheng Kung Girls' High School</p>
+    <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.9;">版權所有 | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const button = document.getElementById('change-text-btn');
+    const infoText = document.getElementById('info-text');
+    const detailedInfo = document.getElementById('detailed-info');
+    let isExpanded = false;
+
+    button.addEventListener('click', function () {
+      if (!isExpanded) {
+        infoText.innerHTML = `
+          聖功女中創校於1964年，秉持著「敬主愛人」的校訓，為學生提供優質的教育環境。
+          本校雙語實驗班結合東西方教育精華，培養具備國際視野、中華文化底蕴的現代女性。
+          我們相信教育不僅是知識的傳授，更是品格的塑造與人格的完善，期許每位聖功女孩都能成為社會的棟樑。
+        `;
+        detailedInfo.style.display = 'block';
+        button.textContent = '收起資訊';
+        isExpanded = true;
+      } else {
+        infoText.innerHTML = `
+          聖功女中秉持天主教教育理念，致力於培養具備國際視野、品格優良的現代女性。我們的雙語實驗班結合傳統與創新，為學生提供卓越的教育環境。
+        `;
+        detailedInfo.style.display = 'none';
+        button.textContent = '了解更多資訊';
+        isExpanded = false;
+      }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add subtle animation to sections when they come into view
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
