@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聖功女中校園網頁範例</title>
+    <style>
+        /* 基本樣式 - 適用所有裝置 */
+        body {
+            font-family: '微軟正黑體', 'Microsoft JhengHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff; /* 淺藍色背景 */
+        }
+        header {
+            background-color: #1e3a8a; /* 深藍色頁首 */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .header-content {
+            max-width: 960px;
+            margin: auto;
+        }
+        nav {
+            background-color: #3b82f6; /* 藍色導覽列 */
+            overflow: hidden;
+            display: flex; /* 讓導覽列項目可以彈性排列 */
+            justify-content: center; /* 水平置中 */
+        }
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            flex-grow: 1; /* 讓每個連結平均分配空間 */
+            max-width: 25%; /* 確保在寬螢幕上不會太寬 */
+        }
+        nav a:hover {
+            background-color: #2563eb; /* hover 時的深一點藍色 */
+        }
+        .container {
+            max-width: 960px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #1e3a8a; /* 深藍色頁尾 */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%; /* 確保圖片寬度不會超出容器 */
+            height: auto;
+        }
+        /* 互動按鈕的樣式 - 改為藍色系 */
+        .interactive-button {
+            padding: 10px 20px;
+            background-color: #60a5fa; /* 淺藍色按鈕 */
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .interactive-button:hover {
+            background-color: #3b82f6; /* hover 時的藍色 */
+        }
+        
+        /* 響應式設計的關鍵部分 */
+        @media screen and (max-width: 600px) {
+            nav {
+                flex-direction: column;
+            }
+            nav a {
+                text-align: left;
+                max-width: 100%;
+            }
+            .container {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>聖功女中校園介紹</h1>
+            <p>歡迎來到我們的學校網頁</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#about">關於我們</a>
+        <a href="#news">最新消息</a>
+        <a href="#academics">學術資源</a>
+        <a href="#contact">聯絡我們</a>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>學校簡介</h2>
+            <p id="info-text">這裡是學校的基礎介紹，點擊下面的按鈕可以看更多資訊。</p>
+            
+            <button class="interactive-button" id="change-text-btn">點擊看更多</button>
+            
+            <img src="images/campus_photo.jpg" alt="校園照片">
+        </section>
+
+        <section id="news">
+            <h2>最新消息</h2>
+            <ul>
+                <li>2023/10/26：學校校慶活動圓滿成功！</li>
+                <li>2023/10/20：高中部校外教學活動公告。</li>
+            </ul>
+        </section>
+        
+        <section id="academics">
+            <h2>學術資源</h2>
+            <p>介紹學校的科系、師資或圖書館等資源。</p>
+        </section>
+
+        <section id="contact">
+            <h2>聯絡方式</h2>
+            <p>地址：台南市北區...<br>電話：(06) ...<br>信箱：...</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 聖功女中. 版權所有.</p>
+    </footer>
+    
+    <script>
+        // 1. 找到網頁上的元素：透過元素的 id 來找到它
+        const button = document.getElementById('change-text-btn');
+        const infoText = document.getElementById('info-text');
+
+        // 2. 監聽點擊事件：當按鈕被點擊時，執行一段程式碼
+        button.addEventListener('click', function() {
+            // 3. 改變元素內容：這段程式碼會將文字替換掉
+            infoText.innerText = "聖功女中創校於1964年，秉持著「敬主愛人」的校訓，為學生提供優質的教育環境。";
+        });
+    </script>
+
+</body>
+</html>
